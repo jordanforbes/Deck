@@ -53,5 +53,6 @@ def drawCard():
 d = Deck()
     
 # p(drawCard())
-p(d.cards)
-d.draw()
+# p(d.cards)
+for x in range(53):
+    d.draw()
