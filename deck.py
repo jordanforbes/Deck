@@ -1,14 +1,7 @@
+from utility import p,s,d
 from random import randint as r, shuffle as shfl  
 
-
-def p(x=""):
-    print(x)
-
-def s(x=0):
-    return str(x)
-
-def d(x):
-    return r(0,x)+1
+from DeckClass import Deck 
     
 
 def cardVal(): 
@@ -56,30 +49,9 @@ def drawCard():
     draw = cardName(draw[0], draw[1])
     return draw
 
-cards = {'Hearts': [1,2,3,4,5,6,7,8,9,10,11,12,13],
-         'Diamonds': [1,2,3,4,5,6,7,8,9,10,11,12,13],
-         'Spades': [1,2,3,4,5,6,7,8,9,10,11,12,13],
-         'Clubs': [1,2,3,4,5,6,7,8,9,10,11,12,13]
-         }
 
-class Deck():
-    hand= {}
-    suits = ['Hearts','Diamonds','Spades','Clubs']
-    cards = {
-            'Hearts': [1,2,3,4,5,6,7,8,9,10,11,12,13],
-            'Diamonds': [1,2,3,4,5,6,7,8,9,10,11,12,13],
-            'Spades': [1,2,3,4,5,6,7,8,9,10,11,12,13],
-            'Clubs': [1,2,3,4,5,6,7,8,9,10,11,12,13]
-         }
-
-    def __init__(self):
-        self.cards = cards
-        self.shuffle()
-        
-    def shuffle(self):
-        for x in range(4):
-            shfl(cards[self.suits[x]])
 d = Deck()
     
 # p(drawCard())
 p(d.cards)
+d.draw()
