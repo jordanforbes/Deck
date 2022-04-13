@@ -1,9 +1,11 @@
-from random import randint as r 
+from random import randint, shuffle as r, shfl  
 
 
 def p(x=""):
     print(x)
-    
+
+def s(x=0):
+    return str(x)
 
 def d(x):
     return r(0,x)+1
@@ -32,17 +34,16 @@ def getVal(v):
         
         
 def getSuit(s):
-    match s:
-        case 1:
+        if s == 1:
             return "Hearts"
             
-        case 2: 
+        elif s == 2: 
             return "Diamonds"
             
-        case 3:
+        elif s == 3:
             return "Spades"
             
-        case 4: 
+        else: 
             return "Clubs"
 
     
@@ -55,9 +56,12 @@ def drawCard():
     draw = cardName(draw[0], draw[1])
     return draw
 
-def card(x):
-    pass
+cards = {'Hearts': [1,2,3,4,5,6,7,8,9,10,11,12,13],
+         'Diamonds': 2,
+         'Spades': 3,
+         'Clubs': 4
+         }
     
     
-p(drawCard())
-    
+# p(drawCard())
+p(cards['Hearts'])
