@@ -1,58 +1,36 @@
-from utility import p,s,d
-from random import randint as r, shuffle as shfl  
+import numpy as np
+import numpy.random as npr
+from numpy.random import default_rng
 
-from DeckClass import Deck 
-    
-
-def cardVal(): 
-    card = (d(12),d(3))
-    return card
-    
-    
-def getVal(v):
-    if v == 1:
-        return "Ace"
+from card import Card
+from utility import p
         
-    elif v == 11:
-        return "Jack"
-        
-    elif v == 12:
-        return "Queen"
-        
-    elif v == 13:
-        return "King"  
-        
-    else:
-        return str(v)
-        
-        
-def getSuit(s):
-        if s == 1:
-            return "Hearts"
-            
-        elif s == 2: 
-            return "Diamonds"
-            
-        elif s == 3:
-            return "Spades"
-            
-        else: 
-            return "Clubs"
-
-    
-def cardName(v,s):
-    return f"{getVal(v)} of {getSuit(s)}"
-    
-
-def drawCard():
-    draw = cardVal()
-    draw = cardName(draw[0], draw[1])
-    return draw
+rng = npr.default_rng()
+vals = rng.standard_normal(10)
+more_vals = rng.standard_normal(10)
 
 
-d = Deck()
+class Deck():
+    def __init__(self):
+        p("$$$ built deck $$$")
+        self.deck = self.build()
     
-# p(drawCard())
-# p(d.cards)
-for x in range(53):
-    d.draw()
+    def build(self):
+        deck = rng.choice(52,52,replace=False)
+        deck = np.where(deck == 0, 52,deck)
+        return deck
+    
+    def draw(self,hand):
+        card, self.deck = Card(self.deck[0]), self.deck[1:]
+        hand.add(card)
+        return card
+    
+    def show(self):
+        p(self.deck)
+        
+def chk(name,var):
+    # p("CHECK")
+    p(f"{name}:")
+    p(var)
+    p()
+    
