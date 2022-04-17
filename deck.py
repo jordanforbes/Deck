@@ -18,7 +18,11 @@ class Deck():
     def build(self):
         deck = rng.choice(52,52,replace=False)
         deck = np.where(deck == 0, 52,deck)
-        return deck
+        objDeck = []
+        for n in deck:
+            card = Card(n)
+            objDeck.append(card)
+        return objDeck
     
     def draw(self,hand):
         card, self.deck = Card(self.deck[0]), self.deck[1:]

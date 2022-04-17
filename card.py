@@ -5,7 +5,7 @@ class Card():
     def __init__(self,num):
         p("$$$ card drawn $$$")
         self.num=num
-        cardName=self.idCard(num)
+        cardName=self.idCard()
         self.val=cardName[0]
         self.suit=cardName[1]
         p(self.showCard())
@@ -15,26 +15,32 @@ class Card():
         name=f"{name} of {self.suit}"
         p(name)
         return name
+    
+    def getNum(self):
+        return self.num
         
 
-    def idCard(self,card):
+    def idCard(self):
+        c = self.getNum()
+        p("$$$ ID $$$")
+        p(c)
         suit=""
-        if card <=13:
+        if c <=13:
             suit="Hearts"
             
-        elif 13 < card <= 26:
+        elif 13 < c <= 26:
             suit="Diamonds"
-            card -= 13
+            c -= 13
             
-        elif 26 < card <=39:
+        elif 26 < c <=39:
             suit="Spades"
-            card -= 13*2
+            c -= 13*2
             
-        elif 39 < card <=52:
+        elif 39 < c <=52:
             suit="Clubs"
-            card -= 13*3
+            c -= 13*3
 
-        return(card,suit)
+        return(c,suit)
     
     def getVal(self,v):
         if v == 1:

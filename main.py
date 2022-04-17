@@ -3,7 +3,7 @@ from utility import p
 from deck import Deck
 from card import Card
 from hand import Hand
-from identify import Identify as I
+# from identify import Identify as I
 
 class Field():
     def __init__(self):
@@ -27,4 +27,3 @@ for x in range(5):
 d1.show()
 h1.show()
 p("cutoff")
-# I.id(h1.hand[0].val)
