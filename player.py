@@ -15,5 +15,7 @@ class Player():
         for card in self.hand:
             card.show()
     
-    def discard(self):
-        return self.hand.pop()
+    def discard(self,deck):
+        card= self.hand.pop()
+        deck.insert(card)
+        return card 

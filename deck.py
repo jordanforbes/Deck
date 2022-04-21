@@ -5,13 +5,15 @@ from player import Player
 class Deck():
     def __init__(self):
         self.cards = []
-        self.build()
-        self.shuffle()
     
     def build(self):
         for s in ["Spades","Clubs","Hearts","Diamonds"]:
             for v in range(1,14):
                 self.cards.append(Card(s,v))
+    
+    def setup(self):
+        self.build()
+        self.shuffle()
                 
     def show(self):
         for c in self.cards:
@@ -24,3 +26,6 @@ class Deck():
             
     def drawCard(self):
         return self.cards.pop()
+    
+    def insert(self,card):
+        self.cards.append(card)
