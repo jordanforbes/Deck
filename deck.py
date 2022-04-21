@@ -1,40 +1,26 @@
-import numpy as np
-import numpy.random as npr
-from numpy.random import default_rng
-
+import random
 from card import Card
-from utility import p
-        
-rng = npr.default_rng()
-vals = rng.standard_normal(10)
-more_vals = rng.standard_normal(10)
-
+from player import Player
 
 class Deck():
     def __init__(self):
-        p("$$$ built deck $$$")
-        self.deck = self.build()
+        self.cards = []
+        self.build()
+        self.shuffle()
     
     def build(self):
-        deck = rng.choice(52,52,replace=False)
-        deck = np.where(deck == 0, 52,deck)
-        objDeck = []
-        for n in deck:
-            card = Card(n)
-            objDeck.append(card)
-        return objDeck
-    
-    def draw(self,hand):
-        card, self.deck = Card(self.deck[0]), self.deck[1:]
-        hand.add(card)
-        return card
-    
+        for s in ["Spades","Clubs","Hearts","Diamonds"]:
+            for v in range(1,14):
+                self.cards.append(Card(s,v))
+                
     def show(self):
-        p(self.deck)
-        
-def chk(name,var):
-    # p("CHECK")
-    p(f"{name}:")
-    p(var)
-    p()
-    
+        for c in self.cards:
+            c.show()
+            
+    def shuffle(self):
+        for i in range(len(self.cards)-1, 0, -1):
+            r = random.randint(0, i) #always pick a random number from the left
+            self.cards[i],self.cards[r] = self.cards[r],self.cards[i] #swap 2 random cards
+            
+    def drawCard(self):
+        return self.cards.pop()

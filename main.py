@@ -1,29 +1,32 @@
-from utility import p
+import PySimpleGUI as sg 
+from player import Player 
+from deck import Deck 
 
-from deck import Deck
-from card import Card
-from hand import Hand
-# from identify import Identify as I
+d = Deck()
+bob = Player("Bob")
+jim = Player("Jim")
+bob.xDraw(d,5)
+jim.xDraw(d,5)
+print("show hand")
+print("$$$ bob's hand $$$")
+bob.showHand()
+print("$$$ Jim's hand $$$")
+jim.showHand()
+d.show()
 
-class Field():
-    def __init__(self):
-        self.cards = 0
-        
-    def add(self,n=1):
-        self.cards += n
+sg.theme('DarkAmber')
+layout = [
+    [sg.Text('Hello')]
+]
 
+window = sg.Window(
+    title="deck",
+    Layout = layout
+    )
 
-d1 = Deck()
-field = Field()
-p("start")
-h1 = Hand()
-d1.show()
+while True:
+    e, v = window.read()
+    if e == sg.WIN_CLOSED or e == 'Close':
+        break 
 
-def drawCard():
-    h1.draw(d1)
-    
-for x in range(5):
-    drawCard()
-d1.show()
-h1.show()
-p("cutoff")
+window.close()
