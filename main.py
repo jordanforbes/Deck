@@ -16,12 +16,12 @@ d.show()
 
 sg.theme('DarkAmber')
 layout = [
-    [sg.Text('Hello')]
-]
+            [sg.Text('Hello')]
+        ]
 
 window = sg.Window(
     title="deck",
-    Layout = layout
+    layout= layout
     )
 
 while True:
