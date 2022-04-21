@@ -29,3 +29,7 @@ class Deck():
     
     def insert(self,card):
         self.cards.append(card)
+        
+    def combine(self, deck):
+        for card in self.cards:
+            deck.insert(card)

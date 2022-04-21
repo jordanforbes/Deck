@@ -19,3 +19,4 @@ class Player():
         card= self.hand.pop()
         deck.insert(card)
         return card 
+    

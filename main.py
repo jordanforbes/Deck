@@ -22,7 +22,10 @@ layout = [
             [sg.Button('Draw', k='-DRAW-')],
             [sg.Button('Discard', k='-DISCARD-')],
             [sg.Button('Show Hand', k="-SHOW-")],
-            [sg.Button('Show Deck',k='-DECK-')]
+            [sg.Button('Show Deck',k='-DECK-')],
+            [sg.Button('Show Discard Pile',k='-PILE-')],
+            [sg.Button('Shuffle',k='-SHUFFLE-')],
+            [sg.Button('Combine',k='-COMBINE-')]
         ]
 
 window = sg.Window(
@@ -57,4 +60,17 @@ while True:
         d.show()
         print("$$$ END OF DECK $$$")
                 
+    if e == '-PILE-':
+        print("$$$ DISCARD PILE $$$")
+        discard.show()
+        print("$$$ END OF DISCARD PILE $$$")
+        
+    if e == '-SHUFFLE-':
+        print("$$$ SHUFFLE $$$")
+        d.shuffle()
+        
+    if e == '-COMBINE-':
+        print("$$$ COMBINE $$$")
+        discard.combine(d)
+        
 window.close()
