@@ -1,6 +1,8 @@
 import PySimpleGUI as sg 
 from player import Player 
 from deck import Deck 
+import subprocess 
+import sys 
 
 d = Deck()
 d.setup()
@@ -16,22 +18,53 @@ bob.xDraw(d,5)
 # jim.showHand()
 # d.show()
 
-sg.theme('DarkAmber')
+sg.theme('DarkTanBlue')
+
+col1= [
+                [sg.Text('Deck Methods')],
+                [sg.Button('Draw', k='-DRAW-')],
+                [sg.Button('Discard', k='-DISCARD-')],
+                [sg.Button('Show Hand', k="-SHOW-")],
+                [sg.Button('Show Deck',k='-DECK-')],
+                [sg.Button('Show Discard Pile',k='-PILE-')],
+                [sg.Button('Shuffle',k='-SHUFFLE-')],
+                [sg.Button('Combine',k='-COMBINE-')],
+            ]
+col2= [ 
+            [sg.Output(size=(60,15))]
+       ]
 layout = [
-            [sg.Text('Deck Methods')],
-            [sg.Button('Draw', k='-DRAW-')],
-            [sg.Button('Discard', k='-DISCARD-')],
-            [sg.Button('Show Hand', k="-SHOW-")],
-            [sg.Button('Show Deck',k='-DECK-')],
-            [sg.Button('Show Discard Pile',k='-PILE-')],
-            [sg.Button('Shuffle',k='-SHUFFLE-')],
-            [sg.Button('Combine',k='-COMBINE-')]
+            [sg.Column(col1, element_justification='c'),
+             sg.Column(col2, element_justification='c')]
         ]
 
 window = sg.Window(
     title="deck",
     layout= layout
     )
+
+
+# def runCommand(cmd, timeout=None, window=None):
+#     p = subprocess.Popen(
+#         cmd, 
+#         shell=True, 
+#         stdout=subprocess.PIPE, 
+#         stderr=subprocess.STDOUT
+#         )
+#     output=''
+#     for line in p.stdout:
+#         line = line.decode(
+#             errors='replace' if (sys.vewrsion_info) < (3,5) 
+#             else 'backslashreplace'.rstrip())
+#         output += line 
+#         print(line) 
+#         window.Refresh() if window else None 
+#     retval = p.wait(timeout)
+#     return (retval, output)
+    
+# def run(k):
+#     runCommand(cmd=v[k], window=window)
+    
 
 while True:
     e, v = window.read()
@@ -43,6 +76,7 @@ while True:
         bob.draw(d)
         bob.showHand()
         print("$$$ END OF HAND $$$")
+
         
     if e == '-SHOW-':
         print("$$$ HAND $$$")

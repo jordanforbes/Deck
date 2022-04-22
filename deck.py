@@ -7,9 +7,9 @@ class Deck():
         self.cards = []
     
     def build(self):
-        for s in ["Spades","Clubs","Hearts","Diamonds"]:
-            for v in range(1,14):
-                self.cards.append(Card(s,v))
+        for suit in ["Spades","Clubs","Hearts","Diamonds"]:
+            for value in range(1,14):
+                self.cards.append(Card(suit,value))
     
     def setup(self):
         self.build()
