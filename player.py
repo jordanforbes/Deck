@@ -3,10 +3,12 @@ class Player():
         self.name = name
         self.hand = []
         self.size = 0
+        self.h = {}
         
     def draw(self, deck):
         card = deck.drawCard()
         self.hand.append(card)
+        self.h.update({self.size:card})
         self.showSize(1)
         return self #allows chaining
     
@@ -21,6 +23,7 @@ class Player():
         
     def showHand(self):
         self.showSize()
+        print(self.h.items())
         for card in self.hand:
             card.show()
         return self.hand
