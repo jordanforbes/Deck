@@ -5,7 +5,7 @@ d = Deck()
 d.setup()
 d.show()
 
-carda,cardb,c,ddd= d.drawCard().show(),d.drawCard().show(),d.drawCard().show(),d.drawCard().show()    
+carda,cardib,c,ddd= d.drawCard().show(),d.drawCard().show(),d.drawCard().show(),d.drawCard().show()    
 
 field={
     "up":[],
@@ -20,11 +20,20 @@ def drawToField(place="up"):
 drawToField()
 drawToField("down")
 
-def showField(field=field):
+def showField(field=field,show="no"):
     for card in field["up"]:
         print(card.show())
-    for card in field["down"]:
-        print("unknown")
+    print("break")
+
+    if show=="no":
+        for card in field["down"]:
+            print("unknown")
+    else:
+        for card in field["down"]:
+            print(card.show())
         
 print("$$$ FIELD $$$")
 showField()
+
+print("$$$ actual field $$$")
+showField(field,"yes")
