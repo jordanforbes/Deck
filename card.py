@@ -4,7 +4,7 @@ class Card():
         self.value = self.faceCheck(val) 
         
     def show(self):
-        print(f"{self.value} of {self.suit}")
+        return f"{self.value} of {self.suit}"
     
     def faceCheck(self,val):
         if val == 1:

@@ -27,6 +27,11 @@ class Deck():
     def drawCard(self):
         return self.cards.pop()
     
+    def drawTo(self,destination):
+        card=self.drawCard()
+        destination.append(card)
+        
+    
     def insert(self,card):
         self.cards.append(card)
         
